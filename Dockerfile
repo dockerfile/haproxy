@@ -12,11 +12,19 @@ RUN \
   apt-get install -y haproxy && \
   sed -i 's/^ENABLED=.*/ENABLED=1/' /etc/default/haproxy
 
+# Add files.
+ADD haproxy.cfg /etc/haproxy/haproxy.cfg
+ADD start.bash /haproxy-start
+
 # Define mountable directories.
-VOLUME ["/data"]
+VOLUME ["/data", "/haproxy-override"]
 
 # Define working directory.
-WORKDIR /data
+WORKDIR /etc/haproxy
 
 # Define default command.
-CMD ["bash"]
+CMD ["bash", "/haproxy-start"]
+
+# Expose ports.
+EXPOSE 80
+EXPOSE 443
