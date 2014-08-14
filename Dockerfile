@@ -9,7 +9,7 @@ FROM dockerfile/ubuntu
 
 # Install Haproxy.
 RUN \
-  apt-get install -y haproxy && \
+  apt-get install -y haproxy=1.5.3-1~ubuntu14.04.1 && \
   sed -i 's/^ENABLED=.*/ENABLED=1/' /etc/default/haproxy
 
 # Add files.
