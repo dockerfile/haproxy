@@ -20,7 +20,7 @@ ADD haproxy.cfg /etc/haproxy/haproxy.cfg
 ADD start.bash /haproxy-start
 
 # Define mountable directories.
-VOLUME ["/data", "/haproxy-override"]
+VOLUME ["/haproxy-override"]
 
 # Define working directory.
 WORKDIR /etc/haproxy
