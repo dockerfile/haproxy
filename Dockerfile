@@ -9,9 +9,9 @@ FROM dockerfile/ubuntu
 
 # Install Haproxy.
 RUN \
-  sed -i 's/^# \(.*-backports\s\)/\1/g' /etc/apt/sources.list && \
+  add-apt-repository ppa:vbernat/haproxy-1.5 && \
   apt-get update && \
-  apt-get install -y haproxy=1.5.6-1~ubuntu14.04.1 && \
+  apt-get install -y haproxy && \
   sed -i 's/^ENABLED=.*/ENABLED=1/' /etc/default/haproxy && \
   rm -rf /var/lib/apt/lists/*
 
